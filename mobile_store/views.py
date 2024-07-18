@@ -39,7 +39,7 @@ def product(request):
         
 
 
-
+@login_required
 def productInfo(request,product_id):
         user = request.user
        
@@ -81,6 +81,7 @@ def productInfo(request,product_id):
 
         return render(request,"product.html",{"product":product, "addresses" : addresses})
 
+@login_required
 @csrf_protect
 def add_to_wishlist(request,product_id):
 
@@ -98,7 +99,7 @@ def add_to_wishlist(request,product_id):
 
     return JsonResponse({"success": "mobile added to wishlist"})
 
-
+@login_required
 @csrf_protect
 def Remove_from_Wishlist(request, product_id):
 
@@ -114,7 +115,7 @@ def Remove_from_Wishlist(request, product_id):
     return JsonResponse({"success": "mobile removed from wishlist"})
 
 
-
+@login_required
 def cart_view(request):
     user = request.user
     carts = Cart.objects.filter(user=user)
@@ -218,7 +219,7 @@ def checkout_page(request):
         'delivery_charges': delivery_charges
     })
 
-
+@login_required
 def address_page(request):
     user = request.user
 
@@ -251,13 +252,14 @@ def address_page(request):
     
     return render(request, 'address.html')
 
+@login_required
 def delete_address(request,address_id):
      user = request.user
      Address1 = address.objects.filter(user=user, id=address_id)
      Address1.delete()
      return redirect('checkout_page')
 
-
+@login_required
 def order_page(request):
     user = request.user
     orders = cart_orders.objects.filter(user=user)
@@ -267,7 +269,7 @@ def order_page(request):
     
     return render(request, 'order_page.html', {'orders': orders, 'mobiles': mobiles})
 
-
+@login_required
 def delete_order(request,order_id):
     user = request.user
     order = cart_orders.objects.filter(user=user,id=order_id)
