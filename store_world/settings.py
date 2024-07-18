@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=68m!job8(ic$*v4ufp(8vtce$bv=p3dr6ku1rm!=2s0ule-u4
 DEBUG = True
 
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(",")
+ALLOWED_HOSTS = os.getenv('central-maddy-bestit-e19e7c5e.koyeb.app', "localhost,127.0.0.1,[::1]").split(",")
 
 # Application definition
 
