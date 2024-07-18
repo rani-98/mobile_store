@@ -10,6 +10,7 @@
 <body>
 
     <h1 class="text-2xl font-bold">My Orders</h1>
+    {% if orders %}
     <table class="border-separate border border-black m-5 bg-gray-100">
         <thead>
             <tr>
@@ -21,19 +22,22 @@
             </tr>
         </thead>
         <tbody>
-            {% for order in orders %}
+            {% for order_ in orders %}
             <tr>
-                {% for x in mobile %}
-                <td class="border-black border-b-2  text-black hover:text-indigo-800 hover:font-medium"><a href="{% url 'productInfo' x.id %}">{{ order.mobile_name }}</a></td>
-                {% endfor %}
-                <td class="border border-black">{{ order.price }}</td>
-                <td class="border border-black">{{ order.quantity }}</td>
-                <td class="border border-black">{{ order.address}}</td>
-                <td class="border border-black hover:text-indigo-800"><a href="{% url 'delete_order' order.id %}">Delete</a></td>
+                
+                <td class="border-black border-b-2  text-black hover:text-indigo-800 hover:font-medium"><a href="">{{ order_.mobile_name }}</a></td>
+            
+                <td class="border border-black">{{ order_.price }}</td>
+                <td class="border border-black">{{ order_.quantity }}</td>
+                <td class="border border-black">{{ order_.address}}</td>
+                <td class="border border-black hover:text-indigo-800"><a href="{% url 'delete_order' order_.id %}">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <p>No orders</p>
+    {% endif %}
 
 </body>
 </html>

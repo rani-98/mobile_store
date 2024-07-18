@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <section class="bg-gray-100 pt-4">
+  {% if products %}
   <div class="lg:grid lg:grid-cols-5 md:grid-cols-1 md:grid gap-8 bg-blue-200 items-center bg-white">
     {% for x in products %}
 
@@ -79,6 +80,9 @@
     </div>
     {% endfor %}
   </div>
+  {% else %}
+  <p>No products</p>
+  {% endif %}
   
 </section>
 

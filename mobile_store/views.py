@@ -251,10 +251,12 @@ def delete_address(request,address_id):
 def order_page(request):
     user = request.user
     orders = cart_orders.objects.filter(user=user)
-    for order in orders:
-       order.mobile_name = order.mobile_name
-    mobile = Mobile.objects.filter(name = order.mobile_name)
-    return render(request, 'order_page.html', {'orders': orders, 'mobile' : mobile})
+    
+    mobile_names = [order.mobile_name for order in orders]
+    mobiles = Mobile.objects.filter(name=mobile_names)
+    
+    return render(request, 'order_page.html', {'orders': orders, 'mobiles': mobiles})
+
 
 def delete_order(request,order_id):
     user = request.user

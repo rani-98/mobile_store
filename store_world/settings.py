@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=68m!job8(ic$*v4ufp(8vtce$bv=p3dr6ku1rm!=2s0ule-u4
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['central-maddy-bestit-e19e7c5e.koyeb.app', "http://127.0.0.1:8000/"]
+ALLOWED_HOSTS = ['central-maddy-bestit-e19e7c5e.koyeb.app', "127.0.0.1"]
 
 # Application definition
 
