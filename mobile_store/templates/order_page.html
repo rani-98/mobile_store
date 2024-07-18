@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+
+    <h1 class="text-2xl font-bold">My Orders</h1>
+    <table class="border-separate border border-black m-5 bg-gray-100">
+        <thead>
+            <tr>
+                <th class="border border-black">Mobile Name</th>
+                <th class="border border-black">Mobile Price</th>
+                <th class="border border-black">Quantity</th>
+                <th class="border border-black">Address</th>
+                <th class="border border-black">Remove Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                {% for x in mobile %}
+                <td class="border-black border-b-2  text-black hover:text-indigo-800 hover:font-medium"><a href="{% url 'productInfo' x.id %}">{{ order.mobile_name }}</a></td>
+                {% endfor %}
+                <td class="border border-black">{{ order.price }}</td>
+                <td class="border border-black">{{ order.quantity }}</td>
+                <td class="border border-black">{{ order.address}}</td>
+                <td class="border border-black hover:text-indigo-800"><a href="{% url 'delete_order' order.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
